@@ -1,0 +1,20 @@
+---
+/**
+ * <T> — Texto bilingüe / Bilingual text.
+ * Renderiza ES por defecto y guarda EN en data-en para el toggle de idioma.
+ *
+ * Uso:  <T t={content.hero.headline} as="h1" class="..." />
+ */
+import type { Bilingual } from '../data/content';
+
+interface Props {
+  t: Bilingual;
+  as?: keyof HTMLElementTagNameMap;
+  class?: string;
+}
+
+const { t, as = 'span', class: className } = Astro.props;
+const Tag = as as any;
+---
+
+<Tag class={className} data-es={t.es} data-en={t.en} set:html={t.es} />

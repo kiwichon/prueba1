@@ -1,0 +1,111 @@
+---
+import type { Project } from '../data/content';
+import T from './T.astro';
+
+interface Props {
+  project: Project;
+  index: number;
+}
+const { project, index } = Astro.props;
+const num = String(index + 1).padStart(2, '0');
+const Wrapper = project.link ? 'a' : 'article';
+---
+
+<Wrapper
+  class="card reveal"
+  style={`--reveal-delay: ${(index % 2) * 0.08}s`}
+  {...(project.link ? { href: project.link, target: '_blank', rel: 'noopener' } : {})}
+>
+  <div class="card__media">
+    <img
+      src={project.image}
+      data-alt-es={project.alt.es}
+      data-alt-en={project.alt.en}
+      alt={project.alt.es}
+      loading="lazy"
+    />
+    <span class="card__num">{num}</span>
+  </div>
+
+  <div class="card__body">
+    <div class="card__meta">
+      <T t={project.category} class="card__category" />
+      <span class="card__year">{project.year}</span>
+    </div>
+    <h3 class="card__title"><T t={project.title} /></h3>
+    <p class="card__desc"><T t={project.description} /></p>
+    <ul class="card__tags">
+      {project.tags.map((tag) => <li>{tag}</li>)}
+    </ul>
+  </div>
+</Wrapper>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    color: inherit;
+  }
+  .card__media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+  }
+  .card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s var(--ease);
+  }
+  .card:hover .card__media img { transform: scale(1.04); }
+  .card__num {
+    position: absolute;
+    top: 0.9rem;
+    left: 1rem;
+    font-family: var(--font-sans);
+    font-size: var(--step--1);
+    letter-spacing: 0.1em;
+    color: var(--paper);
+    mix-blend-mode: difference;
+  }
+
+  .card__meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: var(--step--1);
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  .card__category { text-transform: uppercase; letter-spacing: 0.1em; }
+  .card__title {
+    font-size: var(--step-2);
+    margin-top: 0.5rem;
+    transition: color 0.3s var(--ease);
+  }
+  .card:hover .card__title { color: var(--accent); }
+  .card__desc {
+    margin-top: 0.6rem;
+    color: var(--ink-soft);
+    max-width: 44ch;
+    font-size: var(--step-0);
+  }
+  .card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .card__tags li {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 0.25rem 0.8rem;
+  }
+</style>

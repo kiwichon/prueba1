@@ -1,0 +1,103 @@
+---
+import { content } from '../data/content';
+import T from './T.astro';
+---
+
+<header class="nav" id="site-nav">
+  <div class="container nav__inner">
+    <a href="#top" class="nav__brand display" aria-label={content.meta.name}>
+      {content.meta.name}
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      {content.nav.map((item) => (
+        <a href={`#${item.id}`}><T t={item.label} /></a>
+      ))}
+    </nav>
+
+    <div class="nav__lang" role="group" aria-label="Language switcher">
+      <button type="button" data-lang-btn="es" aria-pressed="true" onclick="window.__setLang('es')">ES</button>
+      <span aria-hidden="true">/</span>
+      <button type="button" data-lang-btn="en" aria-pressed="false" onclick="window.__setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--paper) 82%, transparent);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s var(--ease);
+  }
+  .nav.is-scrolled { border-bottom-color: var(--line); }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 68px;
+  }
+  .nav__brand {
+    font-size: var(--step-1);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  .nav__links {
+    display: none;
+    gap: 2rem;
+  }
+  .nav__links a {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    position: relative;
+    transition: color 0.25s var(--ease);
+  }
+  .nav__links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.3s var(--ease);
+  }
+  .nav__links a:hover { color: var(--ink); }
+  .nav__links a:hover::after { width: 100%; }
+
+  .nav__lang {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+  .nav__lang button {
+    color: var(--muted);
+    font-weight: 500;
+    transition: color 0.25s var(--ease);
+    padding: 0.2rem;
+  }
+  .nav__lang button[aria-pressed='true'] { color: var(--ink); }
+  .nav__lang button:hover { color: var(--accent); }
+
+  @media (min-width: 760px) {
+    .nav__links { display: flex; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const nav = document.getElementById('site-nav');
+    if (!nav) return;
+    const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+</script>

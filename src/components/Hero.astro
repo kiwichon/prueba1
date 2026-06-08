@@ -1,0 +1,81 @@
+---
+import { content } from '../data/content';
+import T from './T.astro';
+const { hero } = content;
+---
+
+<section class="hero" id="top">
+  <div class="container hero__inner">
+    <p class="eyebrow reveal"><T t={hero.eyebrow} /></p>
+
+    <h1 class="hero__headline reveal" style="--reveal-delay: 0.08s">
+      <T t={hero.headline} />
+    </h1>
+
+    <p class="hero__sub reveal" style="--reveal-delay: 0.16s">
+      <T t={hero.sub} />
+    </p>
+
+    <div class="hero__actions reveal" style="--reveal-delay: 0.24s">
+      <a href="#work" class="btn btn-primary"><T t={hero.ctaPrimary} /></a>
+      <a href="#contact" class="btn btn-ghost"><T t={hero.ctaSecondary} /></a>
+    </div>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <span class="hero__scroll-line"></span>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: calc(100svh - 68px);
+    display: flex;
+    align-items: center;
+    padding-block: clamp(3rem, 10vh, 7rem);
+  }
+  .hero__inner { max-width: 980px; }
+  .hero__headline {
+    font-size: var(--step-5);
+    margin-top: 1.4rem;
+    max-width: 16ch;
+  }
+  .hero__sub {
+    margin-top: 1.8rem;
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    max-width: 46ch;
+    line-height: 1.5;
+  }
+  .hero__actions {
+    margin-top: 2.6rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+  }
+  .hero__scroll {
+    position: absolute;
+    left: var(--gutter);
+    bottom: 2rem;
+    display: none;
+  }
+  .hero__scroll-line {
+    display: block;
+    width: 1px;
+    height: 56px;
+    background: linear-gradient(to bottom, var(--muted), transparent);
+    transform-origin: top;
+    animation: scrollPulse 2.4s var(--ease) infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { transform: scaleY(0.4); opacity: 0.4; }
+    50% { transform: scaleY(1); opacity: 1; }
+  }
+  @media (min-width: 760px) {
+    .hero__scroll { display: block; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__scroll-line { animation: none; }
+  }
+</style>

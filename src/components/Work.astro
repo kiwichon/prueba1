@@ -1,0 +1,32 @@
+---
+import { content } from '../data/content';
+import ProjectCard from './ProjectCard.astro';
+---
+
+<section class="section work" id="work">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-index" data-es="Trabajo seleccionado" data-en="Selected work">
+        Trabajo seleccionado
+      </span>
+    </div>
+
+    <div class="work__grid">
+      {content.projects.map((project, i) => (
+        <ProjectCard project={project} index={i} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .work { background: var(--paper); }
+  .work__grid {
+    display: grid;
+    gap: clamp(2.5rem, 6vw, 4.5rem);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 760px) {
+    .work__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

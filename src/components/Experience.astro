@@ -1,0 +1,53 @@
+---
+import { content } from '../data/content';
+import T from './T.astro';
+---
+
+<section class="section experience" id="experience">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-index" data-es="Experiencia" data-en="Experience">Experiencia</span>
+    </div>
+
+    <ul class="exp__list">
+      {content.experience.map((item, i) => (
+        <li class="exp__item reveal" style={`--reveal-delay: ${i * 0.06}s`}>
+          <div class="exp__period">{item.period}</div>
+          <div class="exp__main">
+            <h3 class="exp__role"><T t={item.role} /></h3>
+            <span class="exp__company">{item.company}</span>
+          </div>
+          <p class="exp__desc"><T t={item.description} /></p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .experience { background: var(--paper); }
+  .exp__list { border-top: 1px solid var(--line); }
+  .exp__item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    padding-block: clamp(1.6rem, 4vw, 2.4rem);
+    border-bottom: 1px solid var(--line);
+  }
+  .exp__period {
+    font-size: var(--step--1);
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  .exp__role { font-size: var(--step-2); }
+  .exp__company { color: var(--accent); font-size: var(--step-0); }
+  .exp__desc { color: var(--ink-soft); max-width: 50ch; }
+
+  @media (min-width: 760px) {
+    .exp__item {
+      grid-template-columns: 0.2fr 0.45fr 0.35fr;
+      align-items: baseline;
+      gap: 1.5rem;
+    }
+  }
+</style>
