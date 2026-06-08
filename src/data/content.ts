@@ -222,12 +222,12 @@ export const content = {
     {
       role: { es: 'Production Creative Director', en: 'Production Creative Director' },
       company: 'Digitas Perú — Publicis Groupe',
-      period: { es: '2024 — Presente', en: '2024 — Present' },
+      period: { es: 'Actualidad', en: 'Present' },
     },
     {
       role: { es: 'Senior Copywriter / Creative Prompter', en: 'Senior Copywriter / Creative Prompter' },
       company: 'Digitas Perú — Publicis Groupe',
-      period: { es: '2022 — 2024', en: '2022 — 2024' },
+      period: { es: 'Trayectoria previa', en: 'Earlier' },
     },
     {
       role: { es: 'Creative Director', en: 'Creative Director' },
@@ -247,7 +247,7 @@ export const content = {
     {
       role: { es: 'Docente · Redacción Publicitaria', en: 'Lecturer · Copywriting' },
       company: 'UPC',
-      period: { es: '2017 — 2019', en: '2017 — 2019' },
+      period: { es: 'Trayectoria previa', en: 'Earlier' },
     },
   ] as ExperienceItem[],
 
