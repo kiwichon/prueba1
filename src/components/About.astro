@@ -5,21 +5,38 @@ const { about } = content;
 ---
 
 <section class="section about" id="about">
-  <div class="container about__grid">
-    <div class="about__head reveal">
+  <div class="container">
+    <div class="section-head reveal">
       <span class="section-index"><T t={about.label} /></span>
     </div>
 
-    <div class="about__body">
-      {about.paragraphs.map((p, i) => (
-        <p class="about__p reveal" style={`--reveal-delay: ${i * 0.08}s`}>
-          <T t={p} />
-        </p>
-      ))}
+    <div class="about__grid">
+      <aside class="about__aside reveal">
+        <ul class="about__highlights">
+          {about.highlights.map((h) => (
+            <li>
+              <span class="about__value display">{h.value}</span>
+              <span class="about__hlabel"><T t={h.label} /></span>
+            </li>
+          ))}
+        </ul>
+      </aside>
 
-      <ul class="about__skills reveal" style="--reveal-delay: 0.16s">
-        {about.skills.map((skill) => <li>{skill}</li>)}
-      </ul>
+      <div class="about__body">
+        <p class="about__lead reveal"><T t={about.lead} /></p>
+
+        {about.paragraphs.map((p, i) => (
+          <p class="about__p reveal" style={`--reveal-delay: ${0.05 + i * 0.05}s`}>
+            <T t={p} />
+          </p>
+        ))}
+
+        <ul class="about__skills reveal">
+          {about.skills.map((skill) => (
+            <li><T t={skill} /></li>
+          ))}
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -29,17 +46,47 @@ const { about } = content;
   .about__grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: clamp(1.5rem, 4vw, 3rem);
+    gap: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  /* Aside / highlights */
+  .about__highlights {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .about__highlights li { display: flex; flex-direction: column; gap: 0.2rem; }
+  .about__value {
+    font-size: var(--step-3);
+    line-height: 1;
+    color: var(--ink);
+    font-weight: 460;
+  }
+  .about__hlabel {
+    font-size: var(--step--1);
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    max-width: 14ch;
+  }
+
+  /* Body */
+  .about__lead {
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    line-height: 1.18;
+    color: var(--ink);
+    font-weight: 350;
+    max-width: 18ch;
+    margin-bottom: 1.8rem;
   }
   .about__p {
-    font-family: var(--font-display);
-    font-size: var(--step-2);
-    line-height: 1.28;
-    color: var(--ink);
-    max-width: 24ch;
-    font-weight: 350;
+    color: var(--ink-soft);
+    font-size: var(--step-0);
+    max-width: 60ch;
   }
-  .about__p + .about__p { margin-top: 1.4rem; max-width: 30ch; }
+  .about__p + .about__p { margin-top: 1.1rem; }
+
   .about__skills {
     display: flex;
     flex-wrap: wrap;
@@ -55,8 +102,9 @@ const { about } = content;
     padding: 0.4rem 1rem;
   }
 
-  @media (min-width: 860px) {
-    .about__grid { grid-template-columns: 0.4fr 0.6fr; }
-    .about__p { font-size: var(--step-3); }
+  @media (min-width: 900px) {
+    .about__grid { grid-template-columns: 0.32fr 0.68fr; align-items: start; }
+    .about__highlights { flex-direction: column; gap: 1.8rem; position: sticky; top: 100px; }
+    .about__lead { font-size: var(--step-4); }
   }
 </style>

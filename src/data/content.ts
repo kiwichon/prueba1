@@ -6,61 +6,55 @@
  *  Edita SOLO este archivo para actualizar textos, proyectos, imágenes
  *  y enlaces. Todo el sitio se construye a partir de aquí.
  *
- *  Edit ONLY this file to update copy, projects, images and links.
- *  The whole site is generated from this data.
- *
  *  Cada campo de texto es bilingüe:  { es: "...", en: "..." }
- *  Each text field is bilingual:     { es: "...", en: "..." }
+ *  Registro del español: latino peruano, profesional (no coloquial).
  *
- *  ⚠️  El contenido marcado con  // TODO  es REFERENCIAL (placeholder).
- *      Reemplázalo con la información real de Rafael.
+ *  ⚠️  Lo marcado con  // TODO  está pendiente de confirmar.
  * =====================================================================
  */
 
 export type Bilingual = { es: string; en: string };
 
 export interface Project {
-  /** identificador único para el ancla / unique slug */
   slug: string;
   title: Bilingual;
-  /** rol o categoría corta — short role / category */
   category: Bilingual;
   year: string;
   description: Bilingual;
-  /** etiquetas cortas — short tags */
   tags: string[];
-  /** ruta de imagen en /public/images — image path under /public/images */
   image: string;
-  /** texto alternativo de la imagen — image alt text */
   alt: Bilingual;
-  /** enlace externo opcional (caso de estudio, behance, etc.) */
   link?: string;
 }
 
 export interface ExperienceItem {
   role: Bilingual;
   company: string;
-  period: string;
-  description: Bilingual;
+  period: Bilingual;
+  description?: Bilingual;
+}
+
+export interface Highlight {
+  value: string;
+  label: Bilingual;
 }
 
 export const content = {
   /** Metadatos / SEO */
   meta: {
-    // TODO: confirmar nombre completo / confirm full name
     name: 'Rafael Arias',
     title: {
-      es: 'Rafael Arias — Product & UX Designer',
-      en: 'Rafael Arias — Product & UX Designer',
+      es: 'Rafael Arias — Creative Director & AI Producer',
+      en: 'Rafael Arias — Creative Director & AI Producer',
     } as Bilingual,
     description: {
-      es: 'Portafolio de Rafael Arias, diseñador de producto y experiencia (UX/UI). Hecho en Perú.',
-      en: 'Portfolio of Rafael Arias, product & UX/UI designer. Made in Perú.',
+      es: 'Rafael Arias. Más de 15 años de craft publicitario, hoy en la intersección entre creatividad y producción con IA generativa. Production Creative Director en Digitas (Publicis Groupe). Hecho en Perú.',
+      en: 'Rafael Arias. 15+ years of advertising craft, now at the intersection of creativity and generative AI production. Production Creative Director at Digitas (Publicis Groupe). Made in Perú.',
     } as Bilingual,
     url: 'https://www.rafaelarias.com',
   },
 
-  /** Navegación / Nav links (anclas internas) */
+  /** Navegación */
   nav: [
     { id: 'work', label: { es: 'Trabajo', en: 'Work' } as Bilingual },
     { id: 'about', label: { es: 'Sobre mí', en: 'About' } as Bilingual },
@@ -70,136 +64,190 @@ export const content = {
 
   /** HERO */
   hero: {
-    // TODO: reemplazar con tu eslogan real / replace with your real tagline
     eyebrow: {
-      es: 'Product & UX Designer · Hecho en Perú',
-      en: 'Product & UX Designer · Made in Perú',
+      es: 'Production Creative Director · Digitas — Publicis Groupe',
+      en: 'Production Creative Director · Digitas — Publicis Groupe',
     } as Bilingual,
     headline: {
-      es: 'Diseño productos digitales claros, humanos y memorables.',
-      en: 'I design digital products that are clear, human and memorable.',
+      es: 'Copywriter. Creative Director. AI Producer.',
+      en: 'Copywriter. Creative Director. AI Producer.',
     } as Bilingual,
     sub: {
-      es: 'Diseñador de producto enfocado en convertir problemas complejos en experiencias simples. Actualmente entre Barcelona y Lima.',
-      en: 'Product designer focused on turning complex problems into simple experiences. Currently between Barcelona and Lima.',
+      es: 'Más de 15 años escribiendo campañas para marcas que probablemente reconoces. Hoy, en la intersección entre el craft publicitario y la producción con IA generativa.',
+      en: 'Over 15 years writing campaigns for brands you probably know. Today, at the intersection of advertising craft and generative AI production.',
     } as Bilingual,
     ctaPrimary: { es: 'Ver trabajo', en: 'View work' } as Bilingual,
-    ctaSecondary: { es: 'Contáctame', en: 'Get in touch' } as Bilingual,
+    ctaSecondary: { es: 'Conversemos', en: 'Let’s talk' } as Bilingual,
   },
 
   /** ABOUT */
   about: {
     label: { es: 'Sobre mí', en: 'About' } as Bilingual,
-    // TODO: pega aquí tu bio real de LinkedIn / paste your real LinkedIn bio
+    lead: {
+      es: 'Llevo más de 15 años escribiendo campañas para marcas que probablemente reconoces.',
+      en: 'I’ve spent over 15 years writing campaigns for brands you probably know.',
+    } as Bilingual,
     paragraphs: [
       {
-        es: 'Soy Rafael, diseñador de producto y experiencia con varios años transformando ideas en interfaces que la gente disfruta usar. Trabajo en la intersección entre la investigación, el diseño visual y el negocio.',
-        en: 'I’m Rafael, a product & UX designer with several years turning ideas into interfaces people enjoy using. I work at the intersection of research, visual design and business.',
+        es: 'He pasado por Ogilvy, McCann, Droga5, Wieden+Kennedy, Wunderman Thompson y MullenLowe antes de llegar a Digitas, donde hoy soy Production Creative Director.',
+        en: 'I’ve worked at Ogilvy, McCann, Droga5, Wieden+Kennedy, Wunderman Thompson and MullenLowe before joining Digitas, where I’m now Production Creative Director.',
       } as Bilingual,
       {
-        es: 'Me obsesiona el detalle: la tipografía justa, el micro-momento que hace clic, el flujo que desaparece de lo evidente. Creo en el diseño como una herramienta para resolver, no solo para decorar.',
-        en: 'I’m obsessed with detail: the right typography, the micro-moment that clicks, the flow that becomes invisible. I believe design is a tool to solve, not only to decorate.',
+        es: 'Mi trabajo actual vive en la intersección entre el craft publicitario y la producción con IA generativa. No como experimento, sino como flujo de trabajo real: guiones, videos y campañas completas para clientes como UCSUR, SISE y Cinemark Perú, producidos con un stack propio que combina IA de imagen, video y audio.',
+        en: 'My work today lives at the intersection of advertising craft and generative AI production. Not as an experiment, but as a real workflow: scripts, videos and full campaigns for clients like UCSUR, SISE and Cinemark Perú, produced with a custom stack that combines image, video and audio AI.',
+      } as Bilingual,
+      {
+        es: 'También enseño. En la UPC, en workshops para equipos creativos, y en sesiones donde la pregunta no es «¿la IA reemplaza al creativo?» sino «¿cómo usas esto para pensar mejor y producir más rápido?».',
+        en: 'I also teach. At UPC, in workshops for creative teams, and in sessions where the question isn’t “does AI replace the creative?” but “how do you use this to think better and produce faster?”.',
+      } as Bilingual,
+      {
+        es: 'Si te interesa trabajar con alguien que sabe escribir y sabe promptear, hablamos.',
+        en: 'If you’re interested in working with someone who knows how to write and how to prompt, let’s talk.',
       } as Bilingual,
     ],
-    /** skills cortas — short skills */
+    highlights: [
+      { value: '15+', label: { es: 'años de craft', en: 'years of craft' } },
+      { value: '6+', label: { es: 'agencias globales', en: 'global agencies' } },
+      { value: 'IA', label: { es: 'producción generativa', en: 'generative production' } },
+    ] as Highlight[],
     skills: [
-      'UX/UI Design',
-      'Product Design',
-      'Design Systems',
-      'Prototyping',
-      'User Research',
-      'Branding',
-      'Figma',
-      'Webflow',
-    ],
+      { es: 'Copywriting', en: 'Copywriting' },
+      { es: 'Dirección creativa', en: 'Creative Direction' },
+      { es: 'Producción con IA', en: 'AI Production' },
+      { es: 'Guion', en: 'Scriptwriting' },
+      { es: 'Campañas 360', en: '360 Campaigns' },
+      { es: 'Performance / Meta Ads', en: 'Performance / Meta Ads' },
+      { es: 'Branding', en: 'Branding' },
+      { es: 'Docencia', en: 'Teaching' },
+    ] as Bilingual[],
   },
 
   /** WORK / PROJECTS — modular: agrega o quita objetos libremente */
   projects: [
     {
-      slug: 'proyecto-uno',
-      title: { es: 'Proyecto Uno', en: 'Project One' },
-      category: { es: 'Diseño de producto', en: 'Product design' },
+      slug: 'ucsur-norte',
+      title: { es: 'UCSUR — Dale Norte a Tu Futuro', en: 'UCSUR — Dale Norte a Tu Futuro' },
+      category: { es: 'Campaña universitaria', en: 'University campaign' },
+      year: '2025–2026',
+      description: {
+        es: 'Concepto y producción de una campaña integral para el Campus Norte: guiones, Meta Ads y video con IA.',
+        en: 'Concept and production of an integrated campaign for the North Campus: scripts, Meta Ads and AI video.',
+      },
+      tags: ['Educación', 'Video IA', 'Campaña 360'],
+      image: '/images/projects/ucsur-norte.svg',
+      alt: { es: 'Campaña UCSUR Dale Norte a Tu Futuro', en: 'UCSUR Dale Norte a Tu Futuro campaign' },
+    },
+    {
+      slug: 'ucsur-ingenierias',
+      title: { es: 'UCSUR — Ingenierías que Mejoran el Mundo', en: 'UCSUR — Ingenierías que Mejoran el Mundo' },
+      category: { es: 'Campaña universitaria', en: 'University campaign' },
       year: '2025',
       description: {
-        es: 'Rediseño de la experiencia de una app fintech: del onboarding al dashboard. Enfoque en claridad y confianza.',
-        en: 'Experience redesign for a fintech app: from onboarding to dashboard. Focused on clarity and trust.',
+        es: 'Arquitectura creativa completa: concepto, copy de performance para 13+ carreras y landing page.',
+        en: 'Full creative architecture: concept, performance copy for 13+ programs and a landing page.',
       },
-      tags: ['UX', 'UI', 'Fintech'],
-      image: '/images/projects/project-01.svg', // TODO: reemplazar imagen real
-      alt: { es: 'Vista previa del Proyecto Uno', en: 'Project One preview' },
-      // link: 'https://...',
+      tags: ['Educación', 'Performance', 'Copywriting'],
+      image: '/images/projects/ucsur-ingenierias.svg',
+      alt: { es: 'Campaña UCSUR Ingenierías', en: 'UCSUR Engineering campaign' },
     },
     {
-      slug: 'proyecto-dos',
-      title: { es: 'Proyecto Dos', en: 'Project Two' },
-      category: { es: 'Sistema de diseño', en: 'Design system' },
-      year: '2024',
+      slug: 'ucsur-medicina',
+      title: { es: 'UCSUR — Medicina Humana', en: 'UCSUR — Human Medicine' },
+      category: { es: 'Campaña universitaria', en: 'University campaign' },
+      year: '2025',
       description: {
-        es: 'Construcción de un sistema de diseño escalable que unificó tres productos bajo una misma identidad.',
-        en: 'Built a scalable design system that unified three products under one identity.',
+        es: 'Posicionamiento de triple acreditación con realidad mixta: scripts, Meta Ads y video con IA.',
+        en: 'Triple-accreditation positioning with mixed reality: scripts, Meta Ads and AI video.',
       },
-      tags: ['Design System', 'Tokens', 'Figma'],
-      image: '/images/projects/project-02.svg',
-      alt: { es: 'Vista previa del Proyecto Dos', en: 'Project Two preview' },
+      tags: ['Educación', 'Innovación', 'Video IA'],
+      image: '/images/projects/ucsur-medicina.svg',
+      alt: { es: 'Campaña UCSUR Medicina Humana', en: 'UCSUR Human Medicine campaign' },
     },
     {
-      slug: 'proyecto-tres',
-      title: { es: 'Proyecto Tres', en: 'Project Three' },
-      category: { es: 'Branding & Web', en: 'Branding & Web' },
-      year: '2024',
+      slug: 'sise-aon',
+      title: { es: 'SISE — AON Abril', en: 'SISE — AON April' },
+      category: { es: 'Campaña de performance', en: 'Performance campaign' },
+      year: '2026',
       description: {
-        es: 'Identidad visual y sitio web para una marca emergente, desde el concepto hasta el desarrollo.',
-        en: 'Visual identity and website for an emerging brand, from concept to development.',
+        es: '153+ piezas de Meta Ads para múltiples carreras técnicas, con un sistema de copy escalable.',
+        en: '153+ Meta Ads pieces for multiple technical programs, built on a scalable copy system.',
       },
-      tags: ['Branding', 'Web', 'Art Direction'],
-      image: '/images/projects/project-03.svg',
-      alt: { es: 'Vista previa del Proyecto Tres', en: 'Project Three preview' },
+      tags: ['Performance', 'Meta Ads', 'Educación'],
+      image: '/images/projects/sise-aon.svg',
+      alt: { es: 'Campaña de performance SISE', en: 'SISE performance campaign' },
     },
     {
-      slug: 'proyecto-cuatro',
-      title: { es: 'Proyecto Cuatro', en: 'Project Four' },
-      category: { es: 'Mobile', en: 'Mobile' },
-      year: '2023',
+      slug: 'cinemark-comfort',
+      title: { es: 'Cinemark — Salas Comfort', en: 'Cinemark — Comfort Theaters' },
+      category: { es: 'Retail / Entretenimiento', en: 'Retail / Entertainment' },
+      year: '2025',
       description: {
-        es: 'App móvil de bienestar centrada en hábitos. Diseño emocional y motivación a largo plazo.',
-        en: 'Wellness mobile app centered on habits. Emotional design and long-term motivation.',
+        es: 'Concepto y guion de un spot de 30". Dirección visual con producción en IA.',
+        en: 'Concept and script for a 30" spot. Visual direction with AI production.',
       },
-      tags: ['Mobile', 'UX', 'Product'],
-      image: '/images/projects/project-04.svg',
-      alt: { es: 'Vista previa del Proyecto Cuatro', en: 'Project Four preview' },
+      tags: ['Entretenimiento', 'Video IA', 'Spot'],
+      image: '/images/projects/cinemark-comfort.svg',
+      alt: { es: 'Spot Cinemark Salas Comfort', en: 'Cinemark Comfort Theaters spot' },
+    },
+    {
+      slug: 'certamed-manifesto',
+      title: { es: 'CertaMed — Brand Manifesto', en: 'CertaMed — Brand Manifesto' },
+      category: { es: 'Branding / Video', en: 'Branding / Video' },
+      year: '2025',
+      description: {
+        es: 'Naming participativo y guion de un manifiesto de marca de 70" para la clínica de Científica del Sur.',
+        en: 'Participatory naming and a 70" brand manifesto script for the Científica del Sur clinic.',
+      },
+      tags: ['Salud', 'Branding', 'Guion'],
+      image: '/images/projects/certamed-manifesto.svg',
+      alt: { es: 'Brand manifesto CertaMed', en: 'CertaMed brand manifesto' },
+    },
+    {
+      slug: 'cotizador-ia',
+      title: { es: 'Cotizador de Videos IA', en: 'AI Video Quoting Tool' },
+      category: { es: 'Herramienta interna', en: 'Internal tool' },
+      year: '2025–2026',
+      description: {
+        es: 'Sistema en Excel + skill de Claude para cotizar producción audiovisual con IA en soles. Versiones Standard y Premium.',
+        en: 'Excel system + a Claude skill to quote AI audiovisual production in soles. Standard and Premium tiers.',
+      },
+      tags: ['Productividad', 'IA', 'Herramienta'],
+      image: '/images/projects/cotizador-ia.svg',
+      alt: { es: 'Cotizador de videos con IA', en: 'AI video quoting tool' },
     },
   ] as Project[],
 
   /** EXPERIENCE — modular */
   experience: [
     {
-      // TODO: reemplazar con experiencia real de LinkedIn
-      role: { es: 'Senior Product Designer', en: 'Senior Product Designer' },
-      company: 'Empresa / Company',
-      period: '2023 — Presente',
-      description: {
-        es: 'Lidero el diseño de producto de extremo a extremo, desde la investigación hasta la entrega.',
-        en: 'Leading end-to-end product design, from research to delivery.',
-      },
+      role: { es: 'Production Creative Director', en: 'Production Creative Director' },
+      company: 'Digitas Perú — Publicis Groupe',
+      period: { es: '2024 — Presente', en: '2024 — Present' },
     },
     {
-      role: { es: 'Product Designer', en: 'Product Designer' },
-      company: 'Empresa / Company',
-      period: '2020 — 2023',
-      description: {
-        es: 'Diseño de interfaces y flujos para productos digitales con foco en crecimiento.',
-        en: 'Interface and flow design for digital products with a growth focus.',
-      },
+      role: { es: 'Senior Copywriter / Creative Prompter', en: 'Senior Copywriter / Creative Prompter' },
+      company: 'Digitas Perú — Publicis Groupe',
+      period: { es: '2022 — 2024', en: '2022 — 2024' },
     },
     {
-      role: { es: 'UI Designer', en: 'UI Designer' },
-      company: 'Empresa / Company',
-      period: '2018 — 2020',
-      description: {
-        es: 'Diseño visual y prototipado para clientes de distintas industrias.',
-        en: 'Visual design and prototyping for clients across industries.',
-      },
+      role: { es: 'Creative Director', en: 'Creative Director' },
+      company: 'Regional · Centroamérica',
+      period: { es: 'Por confirmar', en: 'TBC' }, // TODO: confirmar periodo
+    },
+    {
+      role: { es: 'Senior Copywriter', en: 'Senior Copywriter' },
+      company: 'Wunderman Thompson · MullenLowe',
+      period: { es: 'Por confirmar', en: 'TBC' }, // TODO: confirmar periodo
+    },
+    {
+      role: { es: 'Copywriter', en: 'Copywriter' },
+      company: 'Ogilvy · McCann · Droga5 · Wieden+Kennedy',
+      period: { es: 'Por confirmar', en: 'TBC' }, // TODO: confirmar periodo
+    },
+    {
+      role: { es: 'Docente · Redacción Publicitaria', en: 'Lecturer · Copywriting' },
+      company: 'UPC',
+      period: { es: '2017 — 2019', en: '2017 — 2019' },
     },
   ] as ExperienceItem[],
 
@@ -207,15 +255,14 @@ export const content = {
   contact: {
     label: { es: 'Contacto', en: 'Contact' } as Bilingual,
     headline: {
-      es: '¿Tienes un proyecto en mente?',
-      en: 'Got a project in mind?',
+      es: 'El que escribe y el que promptea.',
+      en: 'The one who writes and the one who prompts.',
     } as Bilingual,
     sub: {
-      es: 'Estoy disponible para nuevos proyectos y colaboraciones. Conversemos.',
-      en: 'I’m available for new projects and collaborations. Let’s talk.',
+      es: 'Si te interesa trabajar con alguien que sabe escribir y sabe promptear, hablamos.',
+      en: 'If you’re interested in working with someone who knows how to write and how to prompt, let’s talk.',
     } as Bilingual,
-    // TODO: confirmar email real / confirm real email
-    email: 'rafoarias@gmail.com',
+    email: 'rafoarias@gmail.com', // TODO: confirmar email de contacto
     cta: { es: 'Escríbeme', en: 'Email me' } as Bilingual,
   },
 
@@ -224,7 +271,6 @@ export const content = {
     { label: 'LinkedIn', url: 'https://www.linkedin.com/in/rafoarias/' },
     { label: 'Behance', url: 'https://www.behance.net/rafaelarias' },
     { label: 'Web', url: 'https://www.rafaelarias.com' },
-    // TODO: agregar Dribbble / Instagram / X si aplica
   ],
 };
 
