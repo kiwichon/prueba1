@@ -232,17 +232,17 @@ export const content = {
     {
       role: { es: 'Creative Director', en: 'Creative Director' },
       company: 'Regional · Centroamérica',
-      period: { es: 'Por confirmar', en: 'TBC' }, // TODO: confirmar periodo
+      period: { es: 'Trayectoria previa', en: 'Earlier' },
     },
     {
       role: { es: 'Senior Copywriter', en: 'Senior Copywriter' },
       company: 'Wunderman Thompson · MullenLowe',
-      period: { es: 'Por confirmar', en: 'TBC' }, // TODO: confirmar periodo
+      period: { es: 'Trayectoria previa', en: 'Earlier' },
     },
     {
       role: { es: 'Copywriter', en: 'Copywriter' },
       company: 'Ogilvy · McCann · Droga5 · Wieden+Kennedy',
-      period: { es: 'Por confirmar', en: 'TBC' }, // TODO: confirmar periodo
+      period: { es: 'Trayectoria previa', en: 'Earlier' },
     },
     {
       role: { es: 'Docente · Redacción Publicitaria', en: 'Lecturer · Copywriting' },
